@@ -1,5 +1,5 @@
 diffusers==0.25.0
-transformers==4.30.1
+transformers==4.36.0
 accelerate
 safetensors
 einops
