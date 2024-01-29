@@ -77,18 +77,13 @@ RUN git clone https://github.com/ashleykleynhans/InstantID.git && \
     git checkout ${INSTANTID_COMMIT}
 
 # Install the dependencies for InstantID
-WORKDIR /InstantID/gradio_demo
+WORKDIR /InstantID
 RUN source /venv/bin/activate && \
-    pip3 install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install -r gradio_demo/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
     deactivate
 
 # Copy the style template and script to download the checkpoints
 COPY instantid/* ./
-
-# Symlink required files
-RUN ln -s ../pipeline_stable_diffusion_xl_instantid.py pipeline_stable_diffusion_xl_instantid.py && \
-    ln -s ../ip_adapter ip_adapter && \
-    ln -s ../examples examples
 
 # Download checkpoints
 RUN source /venv/bin/activate && \
