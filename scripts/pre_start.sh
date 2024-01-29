@@ -46,18 +46,14 @@ then
     echo "Auto launching is disabled so the application will not be started automatically"
     echo "You can launch it manually:"
     echo ""
-    echo "   cd /workspace/InstantID/gradio_demo"
+    echo "   cd /workspace/InstantID"
     echo "   deactivate && source /workspace/venv/bin/activate"
-    echo "   export GRADIO_SERVER_NAME=\"0.0.0.0\""
-    echo "   export GRADIO_SERVER_PORT=\"3001\""
-    echo "   python3 app.py"
+    echo "   python3 gradio_demo/app.py --server_port 3001"
 else
     echo "Starting InstantID"
     source /workspace/venv/bin/activate
-    cd /workspace/InstantID/gradio_demo
-    export GRADIO_SERVER_NAME="0.0.0.0"
-    export GRADIO_SERVER_PORT="3001"
-    nohup python3 app.py > /workspace/logs/InstantID.log 2>&1 &
+    cd /workspace/InstantID
+    nohup python3 gradio_demo/app.py --server_port 3001 > /workspace/logs/InstantID.log 2>&1 &
     echo "InstantID started"
     echo "Log file: /workspace/logs/InstantID.log"
     deactivate

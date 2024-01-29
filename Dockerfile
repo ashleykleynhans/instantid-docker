@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG INSTANTID_COMMIT=7aff17e68da11774703619d5991b99796a29e202
+ARG INSTANTID_COMMIT=22268f8e1cc2a9b0f7f42cc05264eab8600ca7d5
 ARG TORCH_VERSION=2.0.1
 ARG XFORMERS_VERSION=0.0.22
 
@@ -72,16 +72,18 @@ RUN source /venv/bin/activate && \
 
 # Clone the git repo of InstantID and set version
 WORKDIR /
-RUN git clone https://github.com/InstantID/InstantID.git && \
+RUN git clone https://github.com/ashleykleynhans/InstantID.git && \
     cd /InstantID && \
     git checkout ${INSTANTID_COMMIT}
 
 # Install the dependencies for InstantID
 WORKDIR /InstantID/gradio_demo
-COPY instantid/* ./
 RUN source /venv/bin/activate && \
     pip3 install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
     deactivate
+
+# Copy the style template and script to download the checkpoints
+COPY instantid/* ./
 
 # Symlink required files
 RUN ln -s ../pipeline_stable_diffusion_xl_instantid.py pipeline_stable_diffusion_xl_instantid.py && \
@@ -133,6 +135,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=1.0.0
+ENV TEMPLATE_VERSION=1.1.0
 SHELL ["/bin/bash", "--login", "-c"]
 ENTRYPOINT [ "/start.sh" ]
