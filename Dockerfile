@@ -94,7 +94,7 @@ RUN source /venv/bin/activate && \
 
 # Download antelopev2 models from Huggingface
 RUN git lfs install && \
-    git clone https://huggingface.co/Aitrepreneur/models
+    git clone https://huggingface.co/ashleykleynhans/FaceAnalysis models
 
 # Install Jupyter
 RUN pip3 install -U --no-cache-dir jupyterlab \
