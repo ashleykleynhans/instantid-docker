@@ -48,8 +48,10 @@ RUN apt update && \
         htop \
         pkg-config \
         libcairo2-dev \
-        libgoogle-perftools4 libtcmalloc-minimal4 \
-        apt-transport-https ca-certificates && \
+        libgoogle-perftools4 \
+        libtcmalloc-minimal4 \
+        apt-transport-https \
+        ca-certificates && \
     update-ca-certificates && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
@@ -130,6 +132,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=1.1.1
+ENV TEMPLATE_VERSION=1.1.2
 SHELL ["/bin/bash", "--login", "-c"]
 ENTRYPOINT [ "/start.sh" ]
