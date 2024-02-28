@@ -1,9 +1,9 @@
 # Stage 1: Base
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04 as base
 
-ARG INSTANTID_COMMIT=649c846e9a6202af6d6b279c83347fb069516bac
-ARG TORCH_VERSION=2.0.1
-ARG XFORMERS_VERSION=0.0.22
+ARG INSTANTID_COMMIT=204db37f6c519d2182a9b5dd7f0c188c92fdcdf7
+ARG TORCH_VERSION=2.2.0
+ARG XFORMERS_VERSION=0.0.24
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -70,7 +70,7 @@ RUN python3 -m venv /venv
 
 # Install Torch
 RUN source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install xformers==${XFORMERS_VERSION} && \
     deactivate
 
@@ -83,7 +83,7 @@ RUN git clone https://github.com/ashleykleynhans/InstantID.git && \
 # Install the dependencies for InstantID
 WORKDIR /InstantID
 RUN source /venv/bin/activate && \
-    pip3 install -r gradio_demo/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install -r gradio_demo/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121 && \
     deactivate
 
 # Copy the style template and script to download the checkpoints
@@ -134,7 +134,7 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/502.html /usr/share/nginx/html/502.html
 
 # Set template version
-ENV TEMPLATE_VERSION=1.1.4
+ENV TEMPLATE_VERSION=2.0.0
 
 # Copy the scripts
 WORKDIR /
