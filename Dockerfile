@@ -134,7 +134,10 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/502.html /usr/share/nginx/html/502.html
 
 # Set template version
-ENV TEMPLATE_VERSION=2.0.0
+ENV TEMPLATE_VERSION=2.0.1
+
+# Set the venv path
+ENV VENV_PATH="/workspace/venvs/instantid"
 
 # Copy the scripts
 WORKDIR /
