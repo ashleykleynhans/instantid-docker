@@ -23,6 +23,25 @@ You can use my custom [RunPod template](
 https://runpod.io/gsc?template=10apqooxnz&ref=2xxro4sy)
 to launch it on RunPod.
 
+## Building the Docker image
+
+> [!NOTE]
+> You will need to edit the `docker-bake.hcl` file and update `RELEASE`,
+> and `tags`.  You can obviously edit the other values too, but these
+> are the most important ones.
+
+```bash
+# Clone the repo
+git clone https://github.com/ashleykleynhans/instantid-docker.git
+
+# Log in to Docker Hub
+docker login
+
+# Build the image, tag the image, and push the image to Docker Hub
+cd instantid-docker
+docker buildx bake -f docker-bake.hcl --push
+```
+
 ## Running Locally
 
 ### Install Nvidia CUDA Driver
