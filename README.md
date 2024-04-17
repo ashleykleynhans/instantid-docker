@@ -33,7 +33,7 @@ to launch it on RunPod.
 ## Building the Docker image
 
 > [!NOTE]
-> You will need to edit the `docker-bake.hcl` file and update `USERNAME`,
+> You will need to edit the `docker-bake.hcl` file and update `REGISTRY_USER`,
 > and `RELEASE`.  You can obviously edit the other values too, but these
 > are the most important ones.
 
@@ -47,6 +47,10 @@ docker login
 # Build the image, tag the image, and push the image to Docker Hub
 cd instantid-docker
 docker buildx bake -f docker-bake.hcl --push
+
+# Same as above but customize registry/user/release:
+REGISTRY=ghcr.io REGISTRY_USER=myuser RELEASE=my-release docker buildx \
+    bake -f docker-bake.hcl --push
 ```
 
 ## Running Locally
