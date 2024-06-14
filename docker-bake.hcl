@@ -10,11 +10,11 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "2.2.0"
+    default = "2.3.0"
 }
 
 variable "CU_VERSION" {
-    default = "118"
+    default = "121"
 }
 
 variable "BASE_IMAGE_REPOSITORY" {
@@ -22,11 +22,11 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "1.1.0"
+    default = "1.4.0"
 }
 
 variable "CUDA_VERSION" {
-    default = "11.8.0"
+    default = "12.1.1"
 }
 
 variable "TORCH_VERSION" {
@@ -41,7 +41,7 @@ target "default" {
         BASE_IMAGE = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-cuda${CUDA_VERSION}-torch${TORCH_VERSION}"
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
-        XFORMERS_VERSION = "0.0.26.post1+cu${CU_VERSION}"
+        XFORMERS_VERSION = "0.0.26.post1"
         INSTANTID_COMMIT = "973f4de6ada7dc48d5d629f018e167cacd342a1e"
         VENV_PATH = "/workspace/venvs/${APP}"
     }
