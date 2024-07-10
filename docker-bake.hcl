@@ -42,6 +42,6 @@ target "default" {
         INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.27"
-        INSTANTID_COMMIT = "973f4de6ada7dc48d5d629f018e167cacd342a1e"
+        INSTANTID_COMMIT = "18a0b4f76031f5300755af3da6c8c3e1f9779798"
     }
 }
