@@ -54,6 +54,6 @@ target "default" {
         INDEX_URL = "${INDEX_URL}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.29.post3"
-        INSTANTID_COMMIT = "18a0b4f76031f5300755af3da6c8c3e1f9779798"
+        INSTANTID_COMMIT = "ff8e8ed4c82c35a0170518ab1fb2eae89baf5b5b"
     }
 }
