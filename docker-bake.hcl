@@ -41,13 +41,17 @@ variable "PYTHON_VERSION" {
     default = "3.10"
 }
 
+variable "INDEX_URL" {
+    default = "https://download.pytorch.org/whl/cu${CU_VERSION}"
+}
+
 target "default" {
     dockerfile = "Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/${APP}:${RELEASE}${RELEASE_SUFFIX}"]
     args = {
         RELEASE = "${RELEASE}"
         BASE_IMAGE = "${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_VERSION}-python${PYTHON_VERSION}-cuda${CUDA_VERSION}-torch${TORCH_VERSION}"
-        INDEX_URL = "https://download.pytorch.org/whl/cu${CU_VERSION}"
+        INDEX_URL = "${INDEX_URL}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.29.post3"
         INSTANTID_COMMIT = "18a0b4f76031f5300755af3da6c8c3e1f9779798"

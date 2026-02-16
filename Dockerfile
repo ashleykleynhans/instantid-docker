@@ -29,7 +29,7 @@ RUN git clone https://github.com/ashleykleynhans/InstantID.git && \
 # Install the dependencies for InstantID
 WORKDIR /InstantID
 RUN source /venv/bin/activate && \
-    pip3 install -r gradio_demo/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install -r gradio_demo/requirements.txt --extra-index-url ${INDEX_URL} && \
     deactivate
 
 # Copy the style template and script to download the checkpoints
