@@ -11,7 +11,7 @@
 
 * Ubuntu 22.04 LTS
 * CUDA 12.4.1
-* Python 3.10
+* Python 3.11
 * [InstantID](
   https://github.com/InstantID/InstantID)
 * Torch 2.6.0

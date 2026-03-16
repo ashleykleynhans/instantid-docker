@@ -10,7 +10,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "2.6.0"
+    default = "2.7.0"
 }
 
 variable "RELEASE_SUFFIX" {
@@ -26,7 +26,7 @@ variable "BASE_IMAGE_REPOSITORY" {
 }
 
 variable "BASE_IMAGE_VERSION" {
-    default = "2.4.14"
+    default = "2.4.16"
 }
 
 variable "CUDA_VERSION" {
@@ -38,7 +38,7 @@ variable "TORCH_VERSION" {
 }
 
 variable "PYTHON_VERSION" {
-    default = "3.10"
+    default = "3.11"
 }
 
 variable "INDEX_URL" {
@@ -54,6 +54,6 @@ target "default" {
         INDEX_URL = "${INDEX_URL}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.29.post3"
-        INSTANTID_COMMIT = "4abc17c0d604efa0c0803f281f499921e65a3ba6"
+        INSTANTID_COMMIT = "fa8af190f4f3ef518b0b0dd739d764e238cc2117"
     }
 }
