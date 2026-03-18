@@ -10,7 +10,7 @@ variable "APP" {
 }
 
 variable "RELEASE" {
-    default = "2.7.0"
+    default = "2.7.1"
 }
 
 variable "RELEASE_SUFFIX" {
@@ -54,6 +54,6 @@ target "default" {
         INDEX_URL = "${INDEX_URL}"
         TORCH_VERSION = "${TORCH_VERSION}+cu${CU_VERSION}"
         XFORMERS_VERSION = "0.0.29.post3"
-        INSTANTID_COMMIT = "b2179d2fa9cad387eeb361482d4e91dfcdf11d24"
+        INSTANTID_COMMIT = "ddb0c21f2b70a1ad9f20c9eb12d7f24efaafb054"
     }
 }
